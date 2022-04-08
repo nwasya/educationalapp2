@@ -1,0 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Nastaliq+Urdu:wght@700&family=Noto+Sans+Arabic&display=swap');
+ 
+body {
+  margin: 0;
+  font-family: 'Lalezar', cursive;
+
+  font-family: 'Noto Nastaliq Urdu', serif;
+
+  font-family: 'Noto Sans Arabic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
