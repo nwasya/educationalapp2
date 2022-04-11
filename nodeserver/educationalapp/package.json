@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "react": "^17.0.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^17.0.0",
     "react-final-form": "^6.5.9",
     "react-router": "^6.3.0",
@@ -47,6 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ],
-    "proxy" :  "localhost:8080"
+    "proxy": "localhost:8080"
   }
 }

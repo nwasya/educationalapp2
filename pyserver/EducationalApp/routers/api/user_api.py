@@ -1,24 +1,19 @@
 from main import app
-from pydantic import BaseModel
 from datetime import datetime, timedelta
 from typing import Optional
-from pymongo import MongoClient
+
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from pymongo.collection import Collection
-from pymongo.database import Database
-
-client = MongoClient('localhost', 27017)
-db: Database = client.educationalapp
-col: Collection = db['user']
+from pydantic import BaseModel
 
 # to get a string like this run:
 # openssl rand -hex 32
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
 
 fake_users_db = {
     "johndoe": {
@@ -29,28 +24,6 @@ fake_users_db = {
         "disabled": False,
     }
 }
-
-
-class Item(BaseModel):
-    name: str
-    last_name: str
-    id_num: int
-    password: str
-
-
-@app.post("/api/signup/")
-async def create_item(item: Item):
-    item.password = get_password_hash(item.password)
-    col.insert_one(
-        {
-            "name": item.name,
-            "last_name": item.last_name,
-            "id_num": item.id_num,
-            "password": item.password,
-        }
-    )
-
-    return {"itemmessage": "Have some residuals"}
 
 
 class Token(BaseModel):
@@ -69,6 +42,11 @@ class User(BaseModel):
     disabled: Optional[bool] = None
 
 
+
+class Login(BaseModel):
+    username: str
+    password : str
+
 class UserInDB(User):
     hashed_password: str
 
@@ -77,7 +55,6 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-app = FastAPI()
 
 
 def verify_password(plain_password, hashed_password):
@@ -140,8 +117,8 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
     return current_user
 
 
-@app.post("/token", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+@app.post("/api/token", response_model=Token)
+async def login_for_access_token(form_data: Login):
     user = authenticate_user(fake_users_db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -156,7 +133,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@app.get("/users/me/", response_model=User)
+@app.get("/api/users/me/", response_model=User)
 async def read_users_me(current_user: User = Depends(get_current_active_user)):
     return current_user
 
