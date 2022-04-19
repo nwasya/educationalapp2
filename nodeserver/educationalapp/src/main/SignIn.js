@@ -34,7 +34,7 @@ function SignIn() {
         "password": formData.password
       })
       .then((response) => {
-        setCookie("user", "gowtham", {path: "/"});
+        localStorage.setItem("token", response.data.access_token);
         setSent(true);
       });
   }

@@ -8,8 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <div  className="App">
-      
- <CookiesProvider>
+
     <Router>
 
         <Routes>
@@ -20,9 +19,7 @@ function App() {
         </Routes>
 
       </Router>
-        
- </CookiesProvider>
-     
+
 
       
     </div>
