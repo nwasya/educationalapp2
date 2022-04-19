@@ -11,6 +11,8 @@ import FormFeedback from '../components/form/FormFeedback';
 import withRoot from '../main/modules/withRoot';
 import { bixious } from '../services/main';
 import TextField from '@mui/material/TextField';
+import CustomizedSnackbars from '../notify/Notify'
+
 
 function SignIn() {
   
@@ -22,8 +24,7 @@ function SignIn() {
     }
   )
 
-  console.log(formData)
-
+  const notify = React.useContext();
   function createPost() {
     bixious
       .post("/token", {
@@ -33,7 +34,13 @@ function SignIn() {
       .then((response) => {
         localStorage.setItem("token", response.data.access_token);
         setSent(true);
-      });
+        console.log(response)
+
+      })
+
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
 
