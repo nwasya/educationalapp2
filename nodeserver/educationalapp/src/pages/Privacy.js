@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Markdown from './modules/components/Markdown';
-import Typography from './modules/components/Typography';
-import AppAppBar from './modules/views/AppAppBar';
-import AppFooter from './modules/views/AppFooter';
-import withRoot from './modules/withRoot';
-import privacy from './modules/views/privacy.md';
+import Markdown from '../components/Markdown';
+import Typography from '../components/Typography';
+import AppAppBar from '../components/views/AppAppBar';
+import AppFooter from '../components/views/AppFooter';
+import withRoot from '../main/modules/withRoot';
+import privacy from '../components/views/privacy.md';
 
 function Privacy() {
   return (

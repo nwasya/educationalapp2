@@ -1,8 +1,7 @@
 
-import Index from './main/Home'
-import SignUp from './main/SignUp'
-import SignIn from './main/SignIn'
-import {CookiesProvider} from "react-cookie"
+import Index from './pages/Home'
+import SignUp from './pages/SignUp'
+import SignIn from './pages/SignIn'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {

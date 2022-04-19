@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../components/Button';
+import Button from '../../components/Button';
 import defer from './defer';
 
 function FormButton(props) {

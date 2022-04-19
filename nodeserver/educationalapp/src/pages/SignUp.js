@@ -3,13 +3,12 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import {  Form, FormSpy } from 'react-final-form';
-import Typography from './modules/components/Typography';
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
-import AppForm from './modules/views/AppForm';
-import FormButton from './modules/form/FormButton';
-import FormFeedback from './modules/form/FormFeedback';
-import withRoot from './modules/withRoot';
+import Typography from '../components/Typography';
+import AppFooter from '../components/views/AppFooter';
+import AppForm from '../components/views/AppForm';
+import FormButton from '../components/form/FormButton';
+import FormFeedback from '../components/form/FormFeedback';
+import withRoot from '../main/modules/withRoot';
 import TextField from '@mui/material/TextField';
 import { bixious } from '../services/main';
 
@@ -57,7 +56,6 @@ function SignUp() {
 
   return (
     <React.Fragment>
-      <AppAppBar />
       <div style={{backgroundImage : `url("https://mui.com/static/themes/onepirate/productCurvyLines.png")`}}>
            <AppForm>
         <React.Fragment>
